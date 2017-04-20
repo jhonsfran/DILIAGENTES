@@ -10,9 +10,9 @@ require_once 'core/ControladorFrontal.func.php';
  
 //Cargamos controladores y acciones
 if(isset($_GET["controller"])){
-    $controllerObj=cargarControlador($_GET["controller"]);
+    $controllerObj = cargarControlador($_GET["controller"]);
 }else{
-    $controllerObj=cargarControlador(CONTROLADOR_DEFECTO);
+    $controllerObj = cargarControlador(CONTROLADOR_DEFECTO);
 }
 
     lanzarAccion($controllerObj);
