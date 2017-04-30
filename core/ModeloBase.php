@@ -2,7 +2,7 @@
 
 class ModeloBase extends EntidadBase{
     private $table;
-    private $fluent;
+    //private $fluent;
      
     public function __construct($table) {
         

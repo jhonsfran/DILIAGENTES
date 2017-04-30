@@ -12,12 +12,22 @@ class PruebaController extends ControladorBase{
          
         //Conseguimos todas las pruebas
         $allpruebas = $prueba->getAll();
+        
+        if(empty($_SESSION['username'])) { // Recuerda usar corchetes.
+            //Cargamos la vista index y le pasamos valores
+            $this->view("index",array(
+                "allpruebas"=>$allpruebas,
+                "Hola"    =>"Soy Jhoan Sebastian Franco"
+            ));
+        }else{
+            //Cargamos la vista index y le pasamos valores
+            $this->view("index",array(
+                "allpruebas"=>$allpruebas,
+                "Hola"    =>"Soy Jhoan Sebastian Franco"
+            ));
+        }
 
-        //Cargamos la vista index y le pasamos valores
-        $this->view("index",array(
-            "allpruebas"=>$allpruebas,
-            "Hola"    =>"Soy Jhoan Sebastian Franco"
-        ));
+        
     }
      
     public function crear(){
