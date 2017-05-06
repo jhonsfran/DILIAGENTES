@@ -61,9 +61,7 @@ class PruebaController extends ControladorBase{
      
     public function hola(){
         
-        $prueba = new PruebaModel();
-        $usu = $prueba->getUnaPrueba();
-        var_dump($usu);
+        $this->view("template",array());
     }
  
 }
