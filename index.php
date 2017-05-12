@@ -21,7 +21,7 @@ if( isset( $_POST["id"] ) ){
     
 }else{
     
-    $id = "";
+    $id = "1";
     
 }
 
@@ -68,7 +68,7 @@ if (time() - $_SESSION["time"] < 3600) {
             
         } else {
 
-            frontController(NULL,"salir");
+            frontController(NULL,"vistaLogin");
         }
     };
 

@@ -133,7 +133,6 @@ function validarCorto($controller,$action) {
         echo "-->mensaje: " . $ex->getMessage() . "\n";
         echo "-->code: " . $ex->getCode() . "\n";
     }
-
     
     
 }

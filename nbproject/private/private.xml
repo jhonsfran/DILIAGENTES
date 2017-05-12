@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/DILIAGENTES/view/templateView.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/index.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/core/AyudaVistas.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/model/Prueba.php</file>
             <file>file:/C:/xampp/htdocs/DILIAGENTES/controller/PruebaController.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/tools/tools.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/config/global.php</file>
             <file>file:/C:/xampp/htdocs/DILIAGENTES/core/ControladorBase.php</file>
         </group>
     </open-files>

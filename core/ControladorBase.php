@@ -38,6 +38,8 @@ class ControladorBase{
             //cargo la landing
             require_once 'landing/index.php.html';
             
+        }else if($vista == "login"){
+            require_once 'view/' . $vista . 'View.php';    
         }else{
             
             //cargo el header del template
@@ -73,6 +75,23 @@ class ControladorBase{
         }    
         
     }
+
+    /*public function login($action){
+                
+        if(isset($action)){ 
+            
+            $arr = array(
+                'error_salida' => TRUE
+            );
+
+            echo json_encode($arr);
+        }else{
+            
+            header("Location: view/loginView.php");
+            
+        }    
+        
+    }*/
 
     //Métodos para los controladores
 
