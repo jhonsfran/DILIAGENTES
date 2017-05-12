@@ -21,10 +21,10 @@ function cargarAccion($controllerObj,$action){
     $controllerObj->$accion();
 }
  
-function lanzarAccion($controllerObj){
+function lanzarAccion($controllerObj,$action){
     
-    if(isset($_GET["action"]) && method_exists($controllerObj, $_GET["action"])){
-        cargarAccion($controllerObj, $_GET["action"]);
+    if(isset($action) && method_exists($controllerObj, $action)){
+        cargarAccion($controllerObj, $action);
     }else{
         cargarAccion($controllerObj, ACCION_DEFECTO);
     }

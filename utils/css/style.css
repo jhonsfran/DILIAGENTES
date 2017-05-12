@@ -1,0 +1,36 @@
+@font-face {
+    font-family: myfont;
+    src: url(MYRIADPROREGULAR.woff);
+}
+
+
+@media (min-width: 700px) {
+    
+    .header-diliagente{
+
+        background: #1dcaff;
+        min-height: 100px;
+        text-align: justify;
+        padding: 10px;
+        font-family: myfont;
+        font-size: 45px;
+        font-weight: bold;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+
+    }    
+    
+}
+
+
+#fondo{
+    color: #fff;
+    background: #ff521d;
+    padding: 2px 5px 5px 4px;
+    margin: 4px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}

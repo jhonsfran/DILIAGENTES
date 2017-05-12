@@ -6,7 +6,7 @@ class ControladorBase{
         
         require_once 'EntidadBase.php';
         require_once 'ModeloBase.php';
-         
+        
         //Incluir todos los modelos
         foreach(glob("model/*.php") as $file){
             require_once $file;
@@ -33,22 +33,50 @@ class ControladorBase{
         require_once 'core/AyudaVistas.php';
         $helper = new AyudaVistas();
         
-        //cargo el header del template
-        //require_once 'view/template/header.php';
-     
-        //cargo la vista -> la vista sólo tiene el body del html
-        require_once 'view/'.$vista.'View.php';
+        if($vista == "landing"){
+            
+            //cargo la landing
+            require_once 'landing/index.php.html';
+            
+        }else{
+            
+            //cargo el header del template
+            require_once 'view/template/header.php';
+
+            //cargo la vista -> la vista sólo tiene el body del html
+            require_once 'view/' . $vista . 'View.php';
+
+            //cargo el footer
+            require_once 'view/template/footer.php';
+        }
         
-        //cargo el footer
-        //require_once 'view/template/footer.php';
+        
     }
      
     public function redirect($controlador=CONTROLADOR_DEFECTO,$accion=ACCION_DEFECTO){
         header("Location:index.php?controller=".$controlador."&action=".$accion);
     }
-     
+    
+    public function salir($action){
+                
+        if(isset($action)){ 
+            
+            $arr = array(
+                'error_salida' => TRUE
+            );
+
+            echo json_encode($arr);
+        }else{
+            
+            header("Location: landing/index.php.html");
+            
+        }    
+        
+    }
+
     //Métodos para los controladores
- 
+
+
 }
 
 ?>

@@ -4,8 +4,43 @@ class PruebaController extends ControladorBase{
     public function __construct() {
         parent::__construct();
     }
-     
-    public function index(){
+    
+    public function index() {
+        
+        $respuesta = "";
+        
+        if(isset($_REQUEST["action"])){
+            $action = $_REQUEST["action"];
+        }else{
+            $action = 'index';
+        }
+
+        switch ($action) {
+            case 'index':
+                $respuesta = "ingresó";
+                $this->hola();
+                break;
+            case 'tracker':
+                $respuesta = "tracker";
+                $this->hola();
+                break;
+            case 'prueba':
+                $this->diegonorrea();
+                $respuesta = "gracias dios";
+                break;
+            default:
+                $respuesta = "pailas";
+        }
+        
+        $arr = array(
+            'validar' => TRUE,
+            'datos' => $respuesta
+        );
+
+        echo json_encode($arr);
+    }
+    
+    public function indexar(){
          
         //Creamos el objeto prueba
         $prueba = new Prueba();
@@ -62,6 +97,17 @@ class PruebaController extends ControladorBase{
     public function hola(){
         
         $this->view("template",array());
+    }
+    
+    public function diegonorrea(){
+        
+        $this->view("prueba",array());
+    }
+    
+    public function ajax(){
+        
+        //$this->view("template",array());
+        echo "sapo";
     }
  
 }

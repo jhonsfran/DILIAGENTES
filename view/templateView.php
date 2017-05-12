@@ -1,39 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Bootstrap 101 Template</title>
+<div class="block-header">
+    <!-- Contact Section -->
+    <form id="login" name="login_user" action="" validate>
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>Nombre de Usuario</label>
+                <input type="text" class="form-control" placeholder="Nombre" id="name" required data-validation-required-message="Ingresa tu nombre de usuario.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>Contraseña</label>
+                <input type="password" class="form-control" placeholder="Contraseña" id="pswd" required data-validation-required-message="Ingresa tu contraseña">
 
-        <!-- Bootstrap -->
-        <link href="utils/css/bootstrap.css" rel="stylesheet">
-        <link href="utils/css/style.css" rel="stylesheet">
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-
-      <header>
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6 col-xs-6 col-lg-6">.col-md-8</div>
-                <div class="col-md-6 col-xs-6 col-lg-6">.col-md-4</div>
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <br>
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="checkbox icheck">
+                    <label>
+                        <input type="checkbox" id="recuerdame"> Recuerdame
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <button id="ingresoLogin" type="button" class="btn btn-success btn-lg">Ingresar</button>
             </div>
         </div>
 
-      </header>
-
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="js/bootstrap.min.js"></script>
-    </body>
-</html>
+        <br>
+    </form>
+</div>
