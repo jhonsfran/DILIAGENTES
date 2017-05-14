@@ -1,14 +1,4 @@
 <?php
-//Configuración global
-require_once 'config/global.php'; 
-//Base para los controladores
-require_once 'core/ControladorBase.php';
-//Funciones para el controlador frontal
-require_once 'core/ControladorFrontal.func.php';
-
-
-//herramientas para el manejo de sesion
-require_once 'tools/tools.php';
 
 //esta variable nos permite saber desde donde ingresa el usuario
 //1 es que ingresa desde formulario inicio
@@ -21,9 +11,33 @@ if( isset( $_POST["id"] ) ){
     
 }else{
     
-    $id = "1";
+    $id = "";
     
 }
+
+
+//Configuración global
+require_once 'config/global.php'; 
+//Base para los controladores
+require_once 'core/ControladorBase.php';
+//Funciones para el controlador frontal
+require_once 'core/ControladorFrontal.func.php';
+
+require_once 'core/EntidadBase.php';
+
+require_once 'core/ModeloBase.php';
+        
+//Incluir todos los modelos
+foreach(glob("model/*.php") as $file){
+    require_once $file;
+}
+
+//herramientas para el manejo de sesion
+require_once 'tools/tools.php';
+
+
+
+
 
 //la session durará una hora
 ini_set("session.cookie_lifetime", "3600");
@@ -33,6 +47,7 @@ session_start();
 
 //Seteamos la hora de la sesion
 $_SESSION["time"] = time();
+
 
 if (isset($_GET["controller"])) {
     $controller = $_GET["controller"];
@@ -47,6 +62,7 @@ if (isset($_GET["action"])) {
     //Cargamos acciones por defecto
     $action = ACCION_DEFECTO;
 }
+
 
 if (time() - $_SESSION["time"] < 3600) {
     

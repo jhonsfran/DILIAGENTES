@@ -10,7 +10,7 @@ $("#btn_sign_in").on("click",function() {//validar usuario
     alert(passwd_user);
 
     registro_usuario_new = {
-        action: 'ingresar',
+        action: 'prueba',
         id: '1',
         usuario: usuario_a_buscar,
         password: passwd_user

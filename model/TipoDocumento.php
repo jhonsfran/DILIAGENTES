@@ -29,7 +29,7 @@ class TipoDocumento extends EntidadBase{
      *
      * @return self
      */
-    private function _setTpdocId($tpdoc_id)
+    public function setTpdocId($tpdoc_id)
     {
         $this->tpdoc_id = $tpdoc_id;
 
@@ -53,7 +53,7 @@ class TipoDocumento extends EntidadBase{
      *
      * @return self
      */
-    private function _setTpdocCodigo($tpdoc_codigo)
+    public function setTpdocCodigo($tpdoc_codigo)
     {
         $this->tpdoc_codigo = $tpdoc_codigo;
 
@@ -77,7 +77,7 @@ class TipoDocumento extends EntidadBase{
      *
      * @return self
      */
-    private function _setTpdocNombre($tpdoc_nombre)
+    public function setTpdocNombre($tpdoc_nombre)
     {
         $this->tpdoc_nombre = $tpdoc_nombre;
 
@@ -101,7 +101,7 @@ class TipoDocumento extends EntidadBase{
      *
      * @return self
      */
-    private function _setTpdocFecha($tpdoc_fecha)
+    public function setTpdocFecha($tpdoc_fecha)
     {
         $this->tpdoc_fecha = $tpdoc_fecha;
 
