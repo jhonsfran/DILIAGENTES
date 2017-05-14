@@ -20,6 +20,7 @@ $("#login").delegate('#ingresoLogin', 'click', function () {//validar usuario
     
     }else{
         httpPetition.ajxPost(url_ajax, registro_usuario_new, function (data) {
+
             
             //alert(data.error_salida);
             
@@ -122,32 +123,28 @@ $("#contenido").delegate('#confirmaPosicion', 'click', function () {//validar us
         
         swal("Solicitud enviada!", "En un momento se le notificará de los agentes disponibles", "success");
         
-        var url_ajax = crearUrlAjax("prueba", "index");//le decimos a qué url tiene que mandar la información, controlador - action
+        var url_ajax = crearUrlAjax("tracker", "index");//le decimos a qué url tiene que mandar la información, controlador - action
 
-        var usuario_a_buscar = $("#name").val();
-        var passwd_user = $("#pswd").val();
+        var datos_diligencia = 'prueba';
 
-        alert(url_ajax);
-        alert(passwd_user);
-
-        registro_usuario_new = {
-            action: 'ingresar',
-            username: usuario_a_buscar,
-            password_user: passwd_user
+        solicitud = {
+            peticion: 'solicitar_agentes',
+            dilegencia: datos_diligencia
         };
 
-        if (usuario_a_buscar == '' || passwd_user == '') {
+        if (datos_diligencia == '') {
 
-            toastr.error("Username y/o contraseña vacíos, por favor digite un valor");
+            toastr.error("Ha ocurrido un error. Por favor vuelva a realizar la diligencia");
 
         } else {
-            httpPetition.ajxPost(url_ajax, registro_usuario_new, function (data) {
+            
+            httpPetition.ajxPost(url_ajax, solicitud, function (data) {
+                
+                //JSON.parse(data);
 
-                //alert(data.error_salida);
+                if (typeof JSON.parse(data).error_salida != 'undefined') {
 
-                if (typeof data.error_salida != 'undefined') {
-
-                    if (data.error_salida == true) {
+                    if (JSON.parse(data).error_salida == true) {
 
                         swal("Oops!", "La sesión ha finalizado", "error");
 
@@ -157,7 +154,36 @@ $("#contenido").delegate('#confirmaPosicion', 'click', function () {//validar us
 
                 } else {
 
+                    
+                    //alert(JSON.parse(data).datos);
+                    
+                    $("#num_agentes").hide();
+                    $("#num_agentes").hide();
+                    
+                    $("#num_agentes").html('');
+                    $("#agentes_disponibles").html('');
+                    
+                    var count = 1;
+                    var html_string = "";
+                    
+                    $(JSON.parse(data).datos).each(function (index, element) {
+                        
+                        alert("agentes_disponibles");
 
+                        html_string += "<li><ahref='javascript:void(0);'><h4>"+element.prueba_nombre+"<small>32%</small></h4><divclass='progress'><divclass='progress-barbg-pink'role='progressbar'aria-valuenow='85'aria-valuemin='0'aria-valuemax='100'style='width:32%'></div></div></a></li>";
+                        
+                        count++;
+
+                    });
+                    
+                    
+                    
+                    $("#num_agentes").html('5');
+                    
+                    $("#agentes_disponibles").html(html_string);
+                    
+                    $("#num_agentes").show();
+                    $("#num_agentes").show();
                 }
 
             });

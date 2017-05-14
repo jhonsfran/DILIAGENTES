@@ -9,8 +9,8 @@ class TrackerController extends ControladorBase{
     
     public function index() {
         
-        if(isset($_REQUEST["action"])){
-            $action = $_REQUEST["action"];
+        if(isset($_REQUEST["peticion"])){
+            $action = $_REQUEST["peticion"];
         }else{
             $action = 'index';
         }
@@ -18,33 +18,37 @@ class TrackerController extends ControladorBase{
 
         switch ($action) {
             case 'index':
-                $respuesta = $this->viewAjax("tracker");
-                //$this->mapa();
+                $respuesta = "";
+                $this->view("template", array());
                 break;
-            case 'tracker':
-                $respuesta = $this->viewAjax("tracker", array());
-                $this->mapa();
+            case 'solicitar_agentes':
+                $respuesta = $this->solicitarAgentes($_REQUEST["dilegencia"]);
+                
                 break;
             case 'prueba':
                 $this->diegonorrea();
                 $respuesta = "gracias dios";
                 break;
             default:
-                $respuesta = "pailas";
+                $respuesta = "";
         }
         
         $arr = array(
-            'validar' => TRUE,
+            'error_salida' => FALSE,
             'datos' => $respuesta
         );
 
         echo json_encode($arr);
     }
     
-    public function mapa() {
+    public function solicitarAgentes($diligencia) {
+        
+        $prueba = new Prueba();
 
-        $html = $this->viewAjax("tracker", array());
-        echo $html;
+        //Conseguimos todas las pruebas
+        $allpruebas = $prueba->getAll();
+
+        return $allpruebas;
     }
 
 }

@@ -17,8 +17,8 @@ class PruebaController extends ControladorBase{
 
         switch ($action) {
             case 'index':
-                $respuesta = "ingresó";
-                $this->hola();
+                $respuesta = "";
+                $this->view("template", array());
                 break;
             case 'tracker':
                 $respuesta = "tracker";
@@ -33,7 +33,7 @@ class PruebaController extends ControladorBase{
         }
         
         $arr = array(
-            'validar' => TRUE,
+            'error_salida' => FALSE,
             'datos' => $respuesta
         );
 
@@ -94,21 +94,11 @@ class PruebaController extends ControladorBase{
     }
      
      
-    public function hola(){
+    public function cargaTemplate(){
         
         $this->view("template",array());
     }
-    
-    public function diegonorrea(){
-        
-        $this->view("prueba",array());
-    }
-    
-    public function ajax(){
-        
-        //$this->view("template",array());
-        echo "sapo";
-    }
+
  
 }
 ?>
