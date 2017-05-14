@@ -43,19 +43,26 @@
     <script src="view/template/js/admin.js"></script>
     <script src="view/template/js/pages/index.js"></script>
 
+    
+    
     <!-- Demo Js -->
     <script src="view/template/js/demo.js"></script>
     
     <script src="view/template/plugins/bootstrap-notify/bootstrap-notify.js"></script>
     <!-- SweetAlert Plugin Js -->
     <script src="view/template/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="utils/js/toastr.js"></script>
     
     <script src="utils/js/controller/ajaxPetition.js"></script>
     <script src="utils/js/controller/templateController.js"></script>
     <script src="utils/js/controller/DEFINE.js"></script>
     <script src="utils/js/controller/toastr.js"></script>
     
-    <script src="utils/js/toastr.js"></script>
+    
+
+    <script src="utils/js/gmaps.js"></script>
+    
+    
     
     
 </body>

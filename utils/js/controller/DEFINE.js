@@ -1,7 +1,9 @@
 var Define = {
     CONTROLLER_BASE: 'prueba',
     ACTION_BASE: 'index',
-    URL_LANDING: 'landing/index.php.html'
+    URL_LANDING: 'landing/index.php.html',
+    LATITUD:'',
+    LONGITUD:''
 };
 
 function crearUrlAjax(controlador, action ) {

@@ -14,15 +14,16 @@ class TrackerController extends ControladorBase{
         }else{
             $action = 'index';
         }
+        
 
         switch ($action) {
             case 'index':
-                $respuesta = "ingresó";
-                $this->hola();
+                $respuesta = $this->viewAjax("tracker");
+                //$this->mapa();
                 break;
             case 'tracker':
-                $respuesta = "tracker";
-                $this->hola();
+                $respuesta = $this->viewAjax("tracker", array());
+                $this->mapa();
                 break;
             case 'prueba':
                 $this->diegonorrea();
@@ -40,6 +41,11 @@ class TrackerController extends ControladorBase{
         echo json_encode($arr);
     }
     
- 
+    public function mapa() {
+
+        $html = $this->viewAjax("tracker", array());
+        echo $html;
+    }
+
 }
 ?>

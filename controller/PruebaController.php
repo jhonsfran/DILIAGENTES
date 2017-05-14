@@ -37,7 +37,7 @@ class PruebaController extends ControladorBase{
             'datos' => $respuesta
         );
 
-        echo json_encode($arr);
+        //echo json_encode($arr);
     }
     
     public function indexar(){
