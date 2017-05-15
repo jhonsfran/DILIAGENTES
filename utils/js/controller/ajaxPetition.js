@@ -1,7 +1,8 @@
 var httpPetition = {
     ajxSubmit: function (form, url, callback) {
         if ($(form).is('form')) {
-            var form = form.serializeObject();
+            var form = form.serialize();
+            toastr.success(form);
         }
         $.ajax({
             type: "POST",
