@@ -65,23 +65,46 @@ function validar($user_login, $user_passwd) {
     $mensajes[] = "Su usuario ha sido desactivado";
     $mensajes[] = "Ok";
     $mensajes[] = "out";//este mensaje me valida desde ajax para salir
-    
-    $prueba = new Prueba();
+
     
     try{
         
-        $prueba->getById($user_login);
+
+        $usuario = new Usuario();
         
-        if($prueba->getId() == $user_passwd){
+        $resultObject = $usuario->getById('user_nickname',$user_login);
+
+        //$usuario = $resultObject;
+
+        foreach ($resultObject as $key => $object) {
+            switch ($key) {
+                case 'user_nickname':
+                    $usuario->setUserNickname($object);
+                    break;
+                case 'user_password':
+                    $usuario->setUserPassword($object);
+                    break;        
+                case 'user_rol':
+                    $usuario->setUserRol($object);
+                    break;                                             
+            }           
+        }
+
+        echo $usuario->getUserNickname();
+
+        if(($resultObject != NULL) &&  ($usuario->getUserPassword() == $user_passwd)){
             
             $mesaje_json = $mensajes[3];
             
-            session_start();
+            if (!isset($_SESSION)) {
+                session_start();
+            }
+            //session_start();
 
             //esto nos indica si la sesion está iniciada
-            $_SESSION["usuario"] = encrypt($prueba->getId());
-            $_SESSION["password"] = encrypt($prueba->getId());
-            $_SESSION["rol"] = encrypt($prueba->getNombre());
+            $_SESSION["usuario"] = encrypt($usuario->getUserNickname());
+            $_SESSION["password"] = encrypt($usuario->getUserPassword());
+            $_SESSION["rol"] = encrypt($usuario->getUserRol());
             
             frontController();
             
@@ -133,7 +156,6 @@ function validarCorto($controller,$action) {
         echo "-->mensaje: " . $ex->getMessage() . "\n";
         echo "-->code: " . $ex->getCode() . "\n";
     }
-
     
     
 }
@@ -144,6 +166,7 @@ function frontController($controller = CONTROLADOR_DEFECTO,$action = ACCION_DEFE
     lanzarAccion($controllerObj,$action);
     
 }
+
 
 function salirSistema() {
 

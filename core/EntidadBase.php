@@ -35,9 +35,9 @@ class EntidadBase{
         return $resultSet;
     }
      
-    public function getById($id){
+    public function getById($column,$value){
         
-        $query = pg_query($this->db,"SELECT * FROM $this->table WHERE prueba_id=$id");
+        $query = pg_query($this->db,"SELECT * FROM $this->table WHERE $column='$value'");
  
         if($row = pg_fetch_object($query)) {
            $resultSet = $row;

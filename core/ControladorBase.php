@@ -4,13 +4,7 @@ class ControladorBase{
  
     public function __construct() {
         
-        require_once 'EntidadBase.php';
-        require_once 'ModeloBase.php';
         
-        //Incluir todos los modelos
-        foreach(glob("model/*.php") as $file){
-            require_once $file;
-        }
     }
      
     //Plugins y funcionalidades
@@ -33,7 +27,7 @@ class ControladorBase{
         require_once 'core/AyudaVistas.php';
         $helper = new AyudaVistas();
         
-                    
+            
         //cargo el header del template
         require_once 'view/template/header.php';
 
@@ -75,6 +69,23 @@ class ControladorBase{
         }    
         
     }
+
+    /*public function login($action){
+                
+        if(isset($action)){ 
+            
+            $arr = array(
+                'error_salida' => TRUE
+            );
+
+            echo json_encode($arr);
+        }else{
+            
+            header("Location: view/loginView.php");
+            
+        }    
+        
+    }*/
 
     //Métodos para los controladores
 

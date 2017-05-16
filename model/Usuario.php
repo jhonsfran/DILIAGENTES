@@ -4,7 +4,7 @@ class Usuario extends EntidadBase{
     private $user_apellidos;
     private $user_nombre;
     private $user_tipodoc;
-    private $user_documento     ;
+    private $user_documento;
     private $user_telefono;
     private $user_celular;
     private $user_password;
@@ -38,7 +38,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserNickname($user_nickname)
+    public function setUserNickname($user_nickname)
     {
         $this->user_nickname = $user_nickname;
 
@@ -62,7 +62,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserApellidos($user_apellidos)
+    public function setUserApellidos($user_apellidos)
     {
         $this->user_apellidos = $user_apellidos;
 
@@ -86,7 +86,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserNombre($user_nombre)
+    public function setUserNombre($user_nombre)
     {
         $this->user_nombre = $user_nombre;
 
@@ -110,7 +110,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserTipodoc($user_tipodoc)
+    public function setUserTipodoc($user_tipodoc)
     {
         $this->user_tipodoc = $user_tipodoc;
 
@@ -134,7 +134,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserDocumento($user_documento)
+    public function setUserDocumento($user_documento)
     {
         $this->user_documento = $user_documento;
 
@@ -158,7 +158,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserTelefono($user_telefono)
+    public function setUserTelefono($user_telefono)
     {
         $this->user_telefono = $user_telefono;
 
@@ -182,7 +182,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserCelular($user_celular)
+    public function setUserCelular($user_celular)
     {
         $this->user_celular = $user_celular;
 
@@ -206,7 +206,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserPassword($user_password)
+    public function setUserPassword($user_password)
     {
         $this->user_password = $user_password;
 
@@ -230,7 +230,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserEmail($user_email)
+    public function setUserEmail($user_email)
     {
         $this->user_email = $user_email;
 
@@ -254,7 +254,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserRol($user_rol)
+    public function setUserRol($user_rol)
     {
         $this->user_rol = $user_rol;
 
@@ -278,7 +278,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserActivo($user_activo)
+    public function setUserActivo($user_activo)
     {
         $this->user_activo = $user_activo;
 
@@ -302,7 +302,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserFecha($user_fecha)
+    public function setUserFecha($user_fecha)
     {
         $this->user_fecha = $user_fecha;
 
@@ -326,7 +326,7 @@ class Usuario extends EntidadBase{
      *
      * @return self
      */
-    private function _setUserFoto($user_foto)
+    public function setUserFoto($user_foto)
     {
         $this->user_foto = $user_foto;
 

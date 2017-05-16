@@ -32,7 +32,7 @@ class DireccionesUsuarios extends EntidadBase{
      *
      * @return self
      */
-    private function _setDirUserNickname($dir_user_nickname)
+    private function setDirUserNickname($dir_user_nickname)
     {
         $this->dir_user_nickname = $dir_user_nickname;
 
@@ -56,7 +56,7 @@ class DireccionesUsuarios extends EntidadBase{
      *
      * @return self
      */
-    private function _setDirDireccion($dir_direccion)
+    private function setDirDireccion($dir_direccion)
     {
         $this->dir_direccion = $dir_direccion;
 
@@ -80,7 +80,7 @@ class DireccionesUsuarios extends EntidadBase{
      *
      * @return self
      */
-    private function _setDirUbicacion($dir_ubicacion)
+    private function setDirUbicacion($dir_ubicacion)
     {
         $this->dir_ubicacion = $dir_ubicacion;
 

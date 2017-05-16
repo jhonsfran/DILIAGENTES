@@ -17,9 +17,11 @@ class PruebaController extends ControladorBase{
 
         switch ($action) {
             case 'index':
-                $respuesta = "";
-                $this->view("template", array());
-                break;
+            
+                $respuesta = "ingresó";
+                $this->vistaLogin();
+                break;            
+
             case 'tracker':
                 $respuesta = "tracker";
                 $this->hola();
@@ -39,7 +41,7 @@ class PruebaController extends ControladorBase{
 
         //echo json_encode($arr);
     }
-    
+/*    
     public function indexar(){
          
         //Creamos el objeto prueba
@@ -64,7 +66,7 @@ class PruebaController extends ControladorBase{
 
         
     }
-     
+*/     
     public function crear(){
         
         
@@ -98,6 +100,24 @@ class PruebaController extends ControladorBase{
         
         $this->view("template",array());
     }
+
+
+    public function vistaLogin()
+    {
+        $this->view("login",array());
+    }
+
+    public function diegonorrea(){
+        
+        $this->view("prueba",array());
+    }
+    
+    public function ajax(){
+        
+        //$this->view("template",array());
+        echo "sapo";
+    }
+
 
  
 }

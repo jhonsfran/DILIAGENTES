@@ -28,7 +28,7 @@ class Rol extends EntidadBase{
      *
      * @return self
      */
-    private function _setRolId($rol_id)
+    private function setRolId($rol_id)
     {
         $this->rol_id = $rol_id;
 
@@ -52,7 +52,7 @@ class Rol extends EntidadBase{
      *
      * @return self
      */
-    private function _setRolNombre($rol_nombre)
+    private function setRolNombre($rol_nombre)
     {
         $this->rol_nombre = $rol_nombre;
 
@@ -76,7 +76,7 @@ class Rol extends EntidadBase{
      *
      * @return self
      */
-    private function _setRolFecha($rol_fecha)
+    private function setRolFecha($rol_fecha)
     {
         $this->rol_fecha = $rol_fecha;
 
