@@ -17,9 +17,11 @@ class PruebaController extends ControladorBase{
 
         switch ($action) {
             case 'index':
+            
                 $respuesta = "ingresó";
                 $this->vistaLogin();
                 break;            
+
             case 'tracker':
                 $respuesta = "tracker";
                 $this->hola();
@@ -33,11 +35,11 @@ class PruebaController extends ControladorBase{
         }
         
         $arr = array(
-            'validar' => TRUE,
+            'error_salida' => FALSE,
             'datos' => $respuesta
         );
 
-        echo json_encode($arr);
+        //echo json_encode($arr);
     }
 /*    
     public function indexar(){
@@ -94,11 +96,11 @@ class PruebaController extends ControladorBase{
     }
      
      
-    public function hola(){
+    public function cargaTemplate(){
         
         $this->view("template",array());
     }
-    
+
 
     public function vistaLogin()
     {
@@ -115,6 +117,8 @@ class PruebaController extends ControladorBase{
         //$this->view("template",array());
         echo "sapo";
     }
+
+
  
 }
 ?>

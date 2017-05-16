@@ -11,7 +11,7 @@ if( isset( $_POST["id"] ) ){
     
 }else{
     
-    $id = "";
+    $id = "2";
     
 }
 
@@ -70,6 +70,7 @@ if (time() - $_SESSION["time"] < 3600) {
     if ($id == '2') {
 
         //validarCorto($controller,$action);
+        
         frontController($controller,$action);
     }
 

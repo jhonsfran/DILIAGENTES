@@ -8015,6 +8015,7 @@ html.ie11 .bs-searchbox .form-control {
     position: fixed;
     left: 0;
     right: 0;
+    z-index: 12;
     top: 0;
     
 
@@ -8025,10 +8026,8 @@ html.ie11 .bs-searchbox .form-control {
     position: absolute;
     text-align: right;
     top: 50%;
-    
     transform: translate(0%, -50%);
     -webkit-transform: translate(0%, -50%);
-    
     vertical-align: middle;
 }
 

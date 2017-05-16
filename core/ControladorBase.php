@@ -27,26 +27,26 @@ class ControladorBase{
         require_once 'core/AyudaVistas.php';
         $helper = new AyudaVistas();
         
-        if($vista == "landing"){
             
-            //cargo la landing
-            require_once 'landing/index.php.html';
-            
-        }else if($vista == "login"){
-            require_once 'view/' . $vista . 'View.php';    
-        }else{
-            
-            //cargo el header del template
-            require_once 'view/template/header.php';
+        //cargo el header del template
+        require_once 'view/template/header.php';
 
-            //cargo la vista -> la vista sólo tiene el body del html
-            require_once 'view/' . $vista . 'View.php';
+        //cargo la vista -> la vista sólo tiene el body del html
+        require_once 'view/' . $vista . 'View.php';
 
-            //cargo el footer
-            require_once 'view/template/footer.php';
-        }
+        //cargo el footer
+        require_once 'view/template/footer.php';
         
         
+    }
+    
+    public function viewAjax($vista){
+        
+        ob_start();
+        include( 'view/' . $vista . 'View.php' );
+        $variable = ob_get_clean();
+        
+        return "$variable";
     }
      
     public function redirect($controlador=CONTROLADOR_DEFECTO,$accion=ACCION_DEFECTO){

@@ -42,9 +42,7 @@ var httpPetition = {
                 toastr.info('Procesando');
             },
             success: function (data) {
-                
-                data = JSON.parse(data);
-                
+                                
                 if (data.error) {
                     toastr.clear();
                 } else {
