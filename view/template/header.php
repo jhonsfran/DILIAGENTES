@@ -232,11 +232,13 @@
                             <li class="header">AGENTES DISPONIBLES</li>
                             <li class="body">
                                 <ul id="agentes_disponibles" class="menu tasks">
+                                
                                     
+                                                    
                                 </ul>
                             </li>
                             <li class="footer">
-                                <a href="javascript:void(0);">View All Tasks</a>
+                                <a href="javascript:void(0);">Ver todos los agentes disponibles</a>
                             </li>
                         </ul>
                     </li>
@@ -313,18 +315,23 @@
                             <span>Diligencia</span>
                         </a>
                         <ul class="ml-menu">
+                            
                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
+
+                                <a id = "#" href="#">
+                                    <i class="material-icons">place</i>
                                     <span>Diligencia</span>
                                 </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a id = "tracker" href="#">
-                                            <i class="material-icons">place</i>
-                                            <span>Mapa</span>
-                                        </a>
-                                    </li>
-                                </ul>
+
+                            </li>
+                            
+                            <li>
+
+                                <a id = "tracker" href="#">
+                                    <i class="material-icons">place</i>
+                                    <span>Mapa</span>
+                                </a>
+                                
                             </li>
                         </ul>
                     </li>

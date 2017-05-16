@@ -94,7 +94,7 @@ $("#menu_principal").delegate('#tracker', 'click', function () {//validar usuari
 $("#menu_principal").delegate('#tracker', 'click', function () {//validar usuario
 
     $("#contenido").hide();
-    var html_string = "<div class='block-header'> <h2> GOOGLE MAPS <small>Mapa para localización</small> </h2> </div><div class='alert alert-warning'> Es importante que <b>confirme</b> su ubicación para que el Agente pueda atender su solicitud &nbsp;&nbsp;<button id='confirmaPosicion' type='button' class='btn btn-primary waves-effect'>Confirmar posición</button></div>";
+    var html_string = "<div class='block-header'> <h2> SEGUIMIENTO DE AGENTES <small>Mapa para localización</small> </h2> </div><div class='alert alert-warning'> Es importante que <b>confirme</b> su ubicación para que el Agente pueda atender su solicitud &nbsp;&nbsp;<button id='confirmaPosicion' type='button' class='btn btn-primary waves-effect'>Confirmar posición</button></div>";
         html_string += "<div id='map' style='width: 50%; height: 50%; border: 1px solid #777; overflow: scroll;'></div>";    
     
     $("#contenido").html(html_string);
@@ -140,11 +140,11 @@ $("#contenido").delegate('#confirmaPosicion', 'click', function () {//validar us
             
             httpPetition.ajxPost(url_ajax, solicitud, function (data) {
                 
-                //JSON.parse(data);
+                //data = JSON.parse(data);
 
-                if (typeof JSON.parse(data).error_salida != 'undefined') {
+                if (typeof data.error_salida != 'undefined') {
 
-                    if (JSON.parse(data).error_salida == true) {
+                    if (data.error_salida == true) {
 
                         swal("Oops!", "La sesión ha finalizado", "error");
 
@@ -168,9 +168,11 @@ $("#contenido").delegate('#confirmaPosicion', 'click', function () {//validar us
                     
                     $(JSON.parse(data).datos).each(function (index, element) {
                         
-                        alert("agentes_disponibles");
+                        //alert("agentes_disponibles");
 
-                        html_string += "<li><ahref='javascript:void(0);'><h4>"+element.prueba_nombre+"<small>32%</small></h4><divclass='progress'><divclass='progress-barbg-pink'role='progressbar'aria-valuenow='85'aria-valuemin='0'aria-valuemax='100'style='width:32%'></div></div></a></li>";
+                        html_string += "<li><a href='javascript:void(0);'><div class='icon-circle' style='margin: 10px 15px 0px 0px'><div class='image circle'><img src='view/template/images/user.jpg' width='48' height='48' alt='User'/></div></div><div class='menu-info'><h4>"+element.prueba_nombre+"</h4><p><i class='material-icons'>edit</i> Click para solicitar Diliagente</p></div><br><br><h4>Experiencia<small>"+element.prueba_id+"</small></h4><div class='progress'><div class='progress-bar bg-pink' role='progressbar' aria-valuenow='85' aria-valuemin='0' aria-valuemax='100' style='width: "+element.prueba_id+"%'></div></div></a></li>";
+                        
+                        
                         
                         count++;
 
@@ -178,10 +180,10 @@ $("#contenido").delegate('#confirmaPosicion', 'click', function () {//validar us
                     
                     
                     
-                    $("#num_agentes").html('5');
+                    $("#num_agentes").html(count);
                     
                     $("#agentes_disponibles").html(html_string);
-                    
+                    $("#agentes_disponibles").css("padding","15px");
                     $("#num_agentes").show();
                     $("#num_agentes").show();
                 }

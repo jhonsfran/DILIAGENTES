@@ -7354,7 +7354,9 @@ fieldset[disabled] .form-control {
     text-align: center;
     padding: 4px 0 6px 0; }
   .dropdown-menu ul.menu {
-    padding-left: 0; }
+    padding-left: 0;
+    list-style:none;
+  }
     .dropdown-menu ul.menu.tasks h4 {
       color: #333;
       font-size: 13px;
@@ -7389,7 +7391,7 @@ fieldset[disabled] .form-control {
         -o-transition: 0.5s;
         -webkit-transition: 0.5s;
         transition: 0.5s; }
-        .dropdown-menu ul.menu li a:hover {
+        .dropdown-menu ul.menu li:hover {
           background-color: #e9e9e9; }
     .dropdown-menu ul.menu .menu-info {
       display: inline-block;
