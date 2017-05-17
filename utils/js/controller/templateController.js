@@ -1,95 +1,6 @@
-$("#login").delegate('#ingresoLogin', 'click', function () {//validar usuario
-
-    var url_ajax = crearUrlAjax("prueba","index");//le decimos a qué url tiene que mandar la información, controlador - action
-
-    var usuario_a_buscar = $("#name").val();
-    var passwd_user = $("#pswd").val();
-
-    alert(url_ajax);
-    alert(passwd_user);
-
-    registro_usuario_new = {
-        action: 'ingresar',
-        username: usuario_a_buscar,
-        password_user: passwd_user
-    };
-
-    if(usuario_a_buscar == '' || passwd_user == ''){
-
-        toastr.error("Username y/o contraseña vacíos, por favor digite un valor");
-    
-    }else{
-        httpPetition.ajxPost(url_ajax, registro_usuario_new, function (data) {
-
-            
-            //alert(data.error_salida);
-            
-            if (typeof data.error_salida != 'undefined'){
-            
-                if(data.error_salida == true){
-
-                    swal("Oops!", "La sesión ha finalizado", "error");
-
-                    redireccionar(Define.URL_LANDING);
-
-                }
-                
-            }else{
-                
-                
-            }
-
-        });
-    };
-
-});
-
 function redireccionar(url_direccionar){
     setTimeout(function(){ location.href=url_direccionar; }, 3000); //tiempo expresado en milisegundos
 } 
-
-
-/*
-$("#menu_principal").delegate('#tracker', 'click', function () {//validar usuario
-
-    var url_ajax = crearUrlAjax("tracker","index");//le decimos a qué url tiene que mandar la información, controlador - action
-
-    
-    httpPetition.ajxPost(url_ajax, null, function (data) {
-        
-        data = JSON.parse(data);
-            
-        //alert(data.datos);
-
-        if (typeof data.error_salida != 'undefined'){
-
-            if(data.error_salida == true){
-
-                swal("Oops!", "La sesión ha finalizado", "error");
-
-                redireccionar(Define.URL_LANDING);
-
-            }
-
-        }else{
-                        
-            $("#contenido").hide();
-            $("#contenido").html("");
-            $("#contenido").html(data.datos);
-            $("#contenido").show("slow");
-            
-            initMap();
-            
-            //swal("Oops!", "La sesión ha finalizado", "error");
-
-        }
-
-    });
-
-});
-*/
-    
-
 
 $("#menu_principal").delegate('#tracker', 'click', function () {//validar usuario
 
@@ -129,7 +40,7 @@ $("#contenido").delegate('#confirmaPosicion', 'click', function () {//validar us
 
         solicitud = {
             peticion: 'solicitar_agentes',
-            dilegencia: datos_diligencia
+            cantidad: '5'
         };
 
         if (datos_diligencia == '') {
@@ -138,11 +49,12 @@ $("#contenido").delegate('#confirmaPosicion', 'click', function () {//validar us
 
         } else {
             
+            
+            
             httpPetition.ajxPost(url_ajax, solicitud, function (data) {
                 
                 //data = JSON.parse(data);
-
-                if (typeof data.error_salida != 'undefined') {
+                
 
                     if (data.error_salida == true) {
 
@@ -150,12 +62,14 @@ $("#contenido").delegate('#confirmaPosicion', 'click', function () {//validar us
 
                         redireccionar(Define.URL_LANDING);
 
-                    }
-
-                } else {
+                    }else {
 
                     
-                    //alert(JSON.parse(data).datos);
+                    //alert(data.datos);
+                    
+                    
+                    //el dato que llega tiene el siguiente estructura
+                    //user_nombre,user_apellidos,user_nickname,user_foto,agente_reputacion
                     
                     $("#num_agentes").hide();
                     $("#num_agentes").hide();
@@ -163,16 +77,14 @@ $("#contenido").delegate('#confirmaPosicion', 'click', function () {//validar us
                     $("#num_agentes").html('');
                     $("#agentes_disponibles").html('');
                     
-                    var count = 1;
+                    var count=0;
                     var html_string = "";
                     
-                    $(JSON.parse(data).datos).each(function (index, element) {
-                        
-                        //alert("agentes_disponibles");
+                    $(data.datos).each(function (index, element) {
 
-                        html_string += "<li><a href='javascript:void(0);'><div class='icon-circle' style='margin: 10px 15px 0px 0px'><div class='image circle'><img src='view/template/images/user.jpg' width='48' height='48' alt='User'/></div></div><div class='menu-info'><h4>"+element.prueba_nombre+"</h4><p><i class='material-icons'>edit</i> Click para solicitar Diliagente</p></div><br><br><h4>Experiencia<small>"+element.prueba_id+"</small></h4><div class='progress'><div class='progress-bar bg-pink' role='progressbar' aria-valuenow='85' aria-valuemin='0' aria-valuemax='100' style='width: "+element.prueba_id+"%'></div></div></a></li>";
-                        
-                        
+                        //alert(element);
+
+                        html_string += "<li><a href='javascript:void(0);'><div class='icon-circle' style='margin: 10px 15px 0px 0px'><div class='image circle'><img src='"+Define.URL_FOTO_PERFIL+element.user_foto+"' width='48' height='48' alt='User'/></div></div><div class='menu-info'><h4>"+element.user_nombre + "<br>" + element.user_apellidos + "</h4><p><i class='material-icons'>person</i>" + element.user_nickname + "</p></div><br><br><h4>Reputación<small>"+element.agente_reputacion+"</small></h4><div class='progress'><div class='progress-bar bg-pink' role='progressbar' aria-valuenow='85' aria-valuemin='0' aria-valuemax='100' style='width: "+element.agente_reputacion+"%'></div></div></a></li>";
                         
                         count++;
 
@@ -186,6 +98,11 @@ $("#contenido").delegate('#confirmaPosicion', 'click', function () {//validar us
                     $("#agentes_disponibles").css("padding","15px");
                     $("#num_agentes").show();
                     $("#num_agentes").show();
+                    
+                    
+                    toastr.success("Hay " + count + "Agente(s) disponiple(s) - Revisa tu bandeja superior izquierda");
+                    
+                    
                 }
 
             });

@@ -10,19 +10,21 @@ class TrackerController extends ControladorBase{
     public function index() {
         
         if(isset($_REQUEST["peticion"])){
-            $action = $_REQUEST["peticion"];
+            $peticion = $_REQUEST["peticion"];
         }else{
-            $action = 'index';
+            $peticion = 'index';
         }
         
 
-        switch ($action) {
+        switch ($peticion) {
             case 'index':
                 $respuesta = "";
                 $this->view("template", array());
                 break;
+            
             case 'solicitar_agentes':
-                $respuesta = $this->solicitarAgentes($_REQUEST["dilegencia"]);
+                $respuesta = $this->solicitarAgentes($_REQUEST["cantidad"]);
+                //$respuesta = "";
                 
                 break;
             case 'prueba':
@@ -32,6 +34,7 @@ class TrackerController extends ControladorBase{
             default:
                 $respuesta = "";
         }
+
         
         $arr = array(
             'error_salida' => FALSE,
@@ -41,14 +44,14 @@ class TrackerController extends ControladorBase{
         echo json_encode($arr);
     }
     
-    public function solicitarAgentes($diligencia) {
+    public function solicitarAgentes($cantidad) {
         
-        $prueba = new Prueba();
+        $usuarioModel = new UsuarioModel("usuario");
 
         //Conseguimos todas las pruebas
-        $allpruebas = $prueba->getAll();
-
-        return $allpruebas;
+        $allAgentes = $usuarioModel->getAgentesDisponibles($cantidad);
+        
+        return $allAgentes;
     }
 
 }

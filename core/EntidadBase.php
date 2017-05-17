@@ -48,14 +48,21 @@ class EntidadBase{
      
     public function getBy($column,$value){
         $query = pg_query($this->db,"SELECT * FROM $this->table WHERE $column='$value'");
- 
+    
         while($row = pg_fetch_object($query)) {
            $resultSet[]=$row;
         }
          
         return $resultSet;
     }
+
      
+    public function insert($value){
+        $sql = "INSERT INTO $this->table $value";
+        $query = pg_query($this->db, $sql);
+        return  'ok';
+    }
+      
     public function deleteById($id){
 
         $query = pg_query($this->db,"DELETE FROM $this->table WHERE prueba_id='$id'"); 
@@ -66,5 +73,7 @@ class EntidadBase{
         $query = pg_query($this->db,"DELETE FROM $this->table WHERE $column='$value'"); 
         return $query;
     }
+
+
           
 }

@@ -29,7 +29,7 @@ class ModeloBase extends EntidadBase{
                 }
             }elseif(pg_num_rows($query)==1){
                 if($row = pg_fetch_object($query)) {
-                    $resultSet=$row;
+                    $resultSet[]=$row;
                 }
             }else{
                 $resultSet=true;
@@ -38,9 +38,11 @@ class ModeloBase extends EntidadBase{
             $resultSet=false;
         }
          
+        //return $resultSet;
+        
         return $resultSet;
     }
-     
+
     //Aqui podemos montarnos métodos para los modelos de consulta
      
 }

@@ -342,7 +342,25 @@ class Usuario extends EntidadBase{
     {
         return $this->tabla;
     }
+    
+    public function listarPropiedades() {
+        $ids = "(";
+        $values = "(";
+        foreach ($this as $key => $value) {
+            if ($key != 'tabla') {
+                $ids .= "$key,";
+                $values .= "'$value',";
+            }
+        }
 
+        $ids = substr($ids, 0, -1);
+        $ids = $ids . ")";
+
+        $values = substr($values, 0, -1);
+        $values = $values . ")";
+
+        return "$ids values $values";
+    }
 
 }
 ?>

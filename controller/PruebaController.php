@@ -19,7 +19,7 @@ class PruebaController extends ControladorBase{
             case 'index':
             
                 $respuesta = "ingresó";
-                $this->vistaLogin();
+                $this->cargaTemplate();
                 break;            
 
             case 'tracker':

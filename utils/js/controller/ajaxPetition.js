@@ -38,6 +38,8 @@ var httpPetition = {
             type: "POST",
             url: url,
             data: data,
+            dataType: "json",
+            
             beforeSend: function () {
                 toastr.info('Procesando');
             },

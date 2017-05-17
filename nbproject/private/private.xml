@@ -6,6 +6,22 @@
             <file>file:/C:/xampp/htdocs/DILIAGENTES/core/ControladorBase.php</file>
             <file>file:/C:/xampp/htdocs/DILIAGENTES/controller/PruebaController.php</file>
             <file>file:/C:/xampp/htdocs/DILIAGENTES/view/templateView.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/utils/js/controller/templateController.js</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/view/template/header.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/view/indexView.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/controller/TrackerController.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/core/ModeloBase.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/utils/js/controller/ajaxPetition.js</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/index.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/tools/tools.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/landing/register.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/utils/js/controller/registerController.js</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/controller/LoginController.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/config/database.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/core/Conectar.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/model/Usuario.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/core/EntidadBase.php</file>
+            <file>file:/C:/xampp/htdocs/DILIAGENTES/config/global.php</file>
         </group>
     </open-files>
 </project-private>

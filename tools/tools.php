@@ -90,23 +90,28 @@ function validar($user_login, $user_passwd) {
             }           
         }
 
-        echo $usuario->getUserNickname();
+        
 
         if(($resultObject != NULL) &&  ($usuario->getUserPassword() == $user_passwd)){
             
             $mesaje_json = $mensajes[3];
-            
-            if (!isset($_SESSION)) {
-                session_start();
-            }
-            //session_start();
 
             //esto nos indica si la sesion está iniciada
             $_SESSION["usuario"] = encrypt($usuario->getUserNickname());
             $_SESSION["password"] = encrypt($usuario->getUserPassword());
             $_SESSION["rol"] = encrypt($usuario->getUserRol());
             
-            frontController();
+            if(isset($_POST["peticion"])){//preguntamos si la petición es ajax
+                
+                frontController($_GET["controller"], $_GET["action"]);
+                
+            }else{
+                
+                frontController('prueba','hola');
+                
+            }
+            
+            
             
         }
         
@@ -136,18 +141,38 @@ function validarCorto($controller,$action) {
     $user_passwd = decrypt($_SESSION["password"]);
     $user_rol = decrypt($_SESSION["rol"]);
     
-    $prueba = new Prueba();
+    $usuario = new Usuario();
     
-    try{
+    try{       
         
-        $prueba->getById($user_login);
+        $resultObject = $usuario->getById('user_nickname',$user_login);
+
+        //$usuario = $resultObject;
+
+        foreach ($resultObject as $key => $object) {
+            switch ($key) {
+                case 'user_nickname':
+                    $usuario->setUserNickname($object);
+                    break;
+                case 'user_password':
+                    $usuario->setUserPassword($object);
+                    break;        
+                case 'user_rol':
+                    $usuario->setUserRol($object);
+                    break;                                             
+            }           
+        }
+
         
-        if($prueba->getId() == $user_passwd){
+
+        if($usuario->getUserPassword() == $user_passwd){
             
             $mesaje_json = $mensajes[3];
-            frontController($controller,$action);
             
-        }
+            frontController($controller,$action);            
+            
+        }    
+      
         
     }catch (Exception $ex){
 
@@ -169,7 +194,10 @@ function frontController($controller = CONTROLADOR_DEFECTO,$action = ACCION_DEFE
 
 
 function salirSistema() {
+    
+    session_start();
 
+    unset($_SESSION['id_session']);
     unset($_SESSION["usuario"]);
     unset($_SESSION["time"]);
     unset($_SESSION["id"]);

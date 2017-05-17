@@ -1,7 +1,7 @@
 
 $("#btn_sign_in").on("click",function() {//validar usuario
 
-    var url_ajax = crearUrlAjax("prueba","index");//le decimos a qué url tiene que mandar la información, controlador - action
+    var url_ajax = crearUrlAjax("login","index");//le decimos a qué url tiene que mandar la información, controlador - action
 
     var usuario_a_buscar = $("#usuario").val();
     var passwd_user = $("#password").val();
@@ -10,7 +10,7 @@ $("#btn_sign_in").on("click",function() {//validar usuario
     alert(passwd_user);
 
     registro_usuario_new = {
-        action: 'prueba',
+        peticion: 'index',
         id: '1',
         usuario: usuario_a_buscar,
         password: passwd_user
@@ -36,6 +36,10 @@ $("#btn_sign_in").on("click",function() {//validar usuario
                 }
                 
             }else{
+                if (data.datos) {
+                    redireccionar(crearUrlAjax('prueba', 'hola'));
+                    
+                }
                 
                 
             }
@@ -46,5 +50,5 @@ $("#btn_sign_in").on("click",function() {//validar usuario
 });
 
 function redireccionar(url_direccionar){
-    setTimeout(function(){ location.href=url_direccionar; }, 3000); //tiempo expresado en milisegundos
+     location.href=url_direccionar;
 } 

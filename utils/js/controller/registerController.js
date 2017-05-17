@@ -1,7 +1,7 @@
 
 $("#btn_sign_up").on("click",function() {//validar usuario
 
-    var url_ajax = crearUrlAjax("register","registroCliente");//le decimos a qué url tiene que mandar la información, controlador - action
+    var url_ajax = crearUrlAjaxLanding("register","registroCliente");//le decimos a qué url tiene que mandar la información, controlador - action
 
     var nombre = $("#name").val();
     var apellido = $("#lastname").val();
@@ -14,7 +14,7 @@ $("#btn_sign_up").on("click",function() {//validar usuario
     var password = $("#password").val();
 
     registro_json = {
-        //action: 'registro',
+        id: '3',        
         nombre: nombre,
         apellido: apellido,
         correo: correo,
@@ -39,20 +39,7 @@ $("#btn_sign_up").on("click",function() {//validar usuario
             
             alert(data.error_salida);
             
-            /*if (typeof data.error_salida != 'undefined'){
-            
-                if(data.error_salida == true){
-
-                    swal("Oops!", "La sesión ha finalizado", "error");
-
-                    redireccionar(Define.URL_LANDING);
-
-                }
-                
-            }else{
-                
-                
-            }*/
+            toastr.success('Te has registrado exitosamente');
 
         });
     };

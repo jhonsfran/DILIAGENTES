@@ -39,35 +39,8 @@ class RegisterController extends ControladorBase{
 
         echo json_encode($arr);
     }
-   
-    public function crear(){
-        
-        
-        if( isset($_POST["prueba_id"]) && isset($_POST["prueba_nombre"])){
-            
-            //Creamos una prueba
-            $prueba = new Prueba();
-            $prueba->setId($_POST["prueba_id"]);
-            $prueba->setNombre($_POST["prueba_nombre"]);
-            $save=$prueba->save();
-        }
-        $this->redirect("prueba", "index");
-    }
-     
-    public function borrar(){
-        
-        
-        if(isset($_GET["id"])){ 
-            
-            $id = (string) $_GET["id"];
-            $prueba = new Prueba();
-            $prueba->deleteById($id); 
-            //deleteBy($column,$value)
-        }
-        
-        $this->redirect();
-    }
-     
+
+
      
     public function hola(){
         
@@ -91,6 +64,7 @@ class RegisterController extends ControladorBase{
         echo "sapo";
     }
 
+    
     public function registroCliente()
     {        
         $nombre = $_POST["nombre"];
@@ -101,12 +75,29 @@ class RegisterController extends ControladorBase{
         $numero_documento = $_POST["numero_documento"];
         $tipo_documento = $_POST["tipo_documento"];
         $nickname = $_POST["nickname"];
-        $password = $_POST["password"]
+        $password = $_POST["password"];
+        
 
+        $usuario = new Usuario();
 
-        var_dump($nickname);
-    
+        $usuario->setUserNickname($nickname);
+        $usuario->setUserApellidos($apellido);
+        $usuario->setUserNombre($nombre);
+        $usuario->setUserTipodoc($tipo_documento);
+        $usuario->setUserDocumento($numero_documento);
+        $usuario->setUserCelular($celular);
+        $usuario->setUserTelefono($telefono);
+        $usuario->setUserPassword($password);
+        $usuario->setUserEmail($correo);
+        $usuario->setUserRol('1');
+        $usuario->setUserActivo('t');
+        $usuario->setUserFecha('NOW()');
+        $usuario->setUserFoto('foto.png');
+
+        //echo $usuario->getUserFoto();
+
+        $usuario->insert($usuario->listarPropiedades());
     }
  
 }
-?>
+
