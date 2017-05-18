@@ -352,7 +352,7 @@ class Usuario extends EntidadBase{
                 $values .= "'$value',";
             }
         }
-
+        
         $ids = substr($ids, 0, -1);
         $ids = $ids . ")";
 

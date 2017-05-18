@@ -1,7 +1,7 @@
 
 $("#btn_sign_in").on("click",function() {//validar usuario
 
-    var url_ajax = crearUrlAjax("login","index");//le decimos a qué url tiene que mandar la información, controlador - action
+    var url_ajax = crearUrlAjaxLanding("login","index");//le decimos a qué url tiene que mandar la información, controlador - action
 
     var usuario_a_buscar = $("#usuario").val();
     var passwd_user = $("#password").val();
@@ -36,10 +36,18 @@ $("#btn_sign_in").on("click",function() {//validar usuario
                 }
                 
             }else{
-                if (data.datos) {
-                    redireccionar(crearUrlAjax('prueba', 'hola'));
-                    
+
+                if(data.validar){
+
+                    toastr.success('Te has registrado exitosamente');
+                    redireccionar(crearUrlAjaxLanding('prueba', 'hola'));
+
+                }else{
+
+                    toastr.error('Ha ocurrido un error');
+
                 }
+
                 
                 
             }

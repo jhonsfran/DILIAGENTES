@@ -40,7 +40,11 @@ $("#contenido").delegate('#confirmaPosicion', 'click', function () {//validar us
 
         solicitud = {
             peticion: 'solicitar_agentes',
-            cantidad: '5'
+            cantidad: '5',
+            position_cliente: {
+                latitud: Define.LATITUD,
+                longitud: Define.LONGITUD 
+            }
         };
 
         if (datos_diligencia == '') {
@@ -202,13 +206,15 @@ function openInfoWindow(marker) {
     Define.LATITUD = markerLatLng.lat();
     Define.LONGITUD = markerLatLng.lng();
     
-    
-    infoWindow.setContent([
-        '<b>La posicion del marcador es:</b><br><br><b>latitud:</b>',
+    /*'<b>La posicion del marcador es:</b><br><br><b>latitud:</b>',
         markerLatLng.lat(),
         ',<br> <b>Longitud:</b>',
         markerLatLng.lng(),
         '<br><br> Arrástrame y haz click para actualizar la posición exacta.'
+        */
+       
+    infoWindow.setContent([
+        'Arrástrame para actualizar la posición exacta.'
     ].join(''));
     infoWindow.open(map, marker);
 }

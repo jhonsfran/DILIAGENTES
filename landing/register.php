@@ -70,7 +70,7 @@
                                                 <input type="email" class="form-control" name="email" id="email" placeholder="Correo Electrónico" required>
                                             </div>
                                         </div>
-                                        <button class="btn btn-block btn-lg bg-deep-orange waves-effect" id="next1">SIGUIENTE</button>
+                                        <button class="btn btn-block btn-lg bg-deep-orange waves-effect" id="next1" href="#profile" data-toggle="tab">SIGUIENTE</button>
                                         <div class="m-t-25 m-b--5 align-center">
                                             <a href="login.php">Ya te encuentras registrado?</a>
                                         </div>
@@ -114,7 +114,7 @@
                                             </div>
                                         </div>
                                         
-                                        <button class="btn btn-block btn-lg bg-deep-orange waves-effect" id="next2">SIGUIENTE</button>
+                                        <button class="btn btn-block btn-lg bg-deep-orange waves-effect" id="next2" href="#messages" data-toggle="tab">SIGUIENTE</button>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="messages">
                                         <br>
@@ -164,11 +164,15 @@
             <script type="text/javascript">
             
             $("#next1").on("click",function() {
-            $("#dos").click ();
+                $("#uno").removeClass("active");
+                $("#dos").addClass("active");
             });
+
             $("#next2").on("click",function() {
-            $("#tres").click ();
+                $("#dos").removeClass("active");
+                $("#tres").addClass("active");
             });
+
             </script>
             <!-- Bootstrap Core Js -->
             <script src="../view/template/plugins/bootstrap/js/bootstrap.js"></script>.

@@ -11,9 +11,7 @@ session_start();
 
 
 if( isset($_SESSION['id_session']) ){
-    
-    $_SESSION['id_session'] = session_id();
-    
+        
     if (isset($_POST['id'])) {
 
         $id = $_POST['id'];
@@ -44,7 +42,7 @@ if( isset($_SESSION['id_session']) ){
     
 }
 
-//$id = '3';
+//$id = '2';
 
 //Configuración global
 require_once 'config/global.php'; 

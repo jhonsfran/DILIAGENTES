@@ -97,6 +97,14 @@ class RegisterController extends ControladorBase{
         //echo $usuario->getUserFoto();
 
         $usuario->insert($usuario->listarPropiedades());
+
+
+        $arr = array(
+            'validar' => TRUE
+        );
+
+        echo json_encode($arr);
+
     }
  
 }

@@ -96,7 +96,10 @@ function validar($user_login, $user_passwd) {
             
             $mesaje_json = $mensajes[3];
 
+
             //esto nos indica si la sesion está iniciada
+            $_SESSION['id_session'] = session_id();
+
             $_SESSION["usuario"] = encrypt($usuario->getUserNickname());
             $_SESSION["password"] = encrypt($usuario->getUserPassword());
             $_SESSION["rol"] = encrypt($usuario->getUserRol());
@@ -135,8 +138,6 @@ function validarCorto($controller,$action) {
     $mensajes[] = "Ok";
     $mensajes[] = "out";//este mensaje me valida desde ajax para salir
     
-    session_start();
-
     $user_login = decrypt($_SESSION["usuario"]);
     $user_passwd = decrypt($_SESSION["password"]);
     $user_rol = decrypt($_SESSION["rol"]);
@@ -171,8 +172,9 @@ function validarCorto($controller,$action) {
             
             frontController($controller,$action);            
             
-        }    
-      
+        } 
+        
+        $usuario->cerrarConetar();
         
     }catch (Exception $ex){
 
@@ -195,8 +197,6 @@ function frontController($controller = CONTROLADOR_DEFECTO,$action = ACCION_DEFE
 
 function salirSistema() {
     
-    session_start();
-
     unset($_SESSION['id_session']);
     unset($_SESSION["usuario"]);
     unset($_SESSION["time"]);

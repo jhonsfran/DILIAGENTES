@@ -118,6 +118,11 @@ class PruebaController extends ControladorBase{
         echo "sapo";
     }
 
+    public function hola(){
+        
+       $this->view("template",array());
+    }
+
 
  
 }

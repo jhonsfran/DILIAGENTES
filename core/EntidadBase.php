@@ -9,7 +9,7 @@ class EntidadBase{
         
         $this->table = (string) $table;
          
-        require_once 'Conectar.php';
+        require_once 'core/Conectar.php';
         
         $this->conectar = new Conectar();
         $this->db = $this->conectar->conexion();
@@ -18,7 +18,11 @@ class EntidadBase{
     public function getConetar(){
         return $this->conectar;
     }
-     
+    
+    public function cerrarConetar() {
+        $this->conectar->close();
+    }
+
     public function db(){
         return $this->db;
     }
@@ -73,7 +77,26 @@ class EntidadBase{
         $query = pg_query($this->db,"DELETE FROM $this->table WHERE $column='$value'"); 
         return $query;
     }
+    
+    public function update($resultObject) {
+        
+        foreach ($resultObject as $key => $object) {
+            echo $key . " => " . $object;
+        }
+        
+        $sql_update = "";
 
+        //$class = $this->getDeclaredFields();
 
-          
+        //echo $class;
+
+        /* $query = pg_query($this->db, "UPDATE $this->table SET $column='$value' WHERE $column='$value'");
+
+          while ($row = pg_fetch_object($query)) {
+          $resultSet[] = $row;
+          }
+
+          return $resultSet; */
+    }
+
 }

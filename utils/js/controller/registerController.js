@@ -26,7 +26,7 @@ $("#btn_sign_up").on("click",function() {//validar usuario
         password: password
     }
 
-    alert(registro_json);
+    //alert(registro_json);
     
 
 
@@ -35,13 +35,22 @@ $("#btn_sign_up").on("click",function() {//validar usuario
         toastr.error("Username y/o contraseña vacíos, por favor digite un valor");
     
     }else{
+
         httpPetition.ajxPost(url_ajax, registro_json, function (data) {
             
-            alert(data.error_salida);
-            
-            toastr.success('Te has registrado exitosamente');
+            //alert(data.error_salida);
+            if(data.validar){
+
+                toastr.success('Te has registrado exitosamente');
+                redireccionar("login.php");
+                
+            }else{
+                toastr.error('Ha ocurrido un error');
+            }
 
         });
+
+        
     };
 
 });
