@@ -1,4 +1,7 @@
-<?php
+<?php namespace controller;
+use orm\entity\Usuario as Usuario;
+use core\ControladorBase as ControladorBase;
+
 class LoginController extends ControladorBase{
      
     public function __construct() {

@@ -1,4 +1,5 @@
-<?php
+<?php namespace controller;
+
 class RegisterController extends ControladorBase{
      
     public function __construct() {

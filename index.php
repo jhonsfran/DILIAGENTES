@@ -1,4 +1,8 @@
 <?php
+use tools\Tools as Tools;
+
+require 'autoload.php';
+
 
 //esta variable nos permite saber desde donde ingresa el usuario
 //1 es que ingresa desde formulario inicio
@@ -10,7 +14,7 @@ session_start();
 
 
 
-if( isset($_SESSION['id_session']) ){
+if( isset($_SESSION['id_session']) && (isset($_SESSION['password']) && isset($_SESSION['usuario']))){
         
     if (isset($_POST['id'])) {
 
@@ -44,25 +48,6 @@ if( isset($_SESSION['id_session']) ){
 
 //$id = '2';
 
-//Configuración global
-require_once 'config/global.php'; 
-//Base para los controladores
-require_once 'core/ControladorBase.php';
-//Funciones para el controlador frontal
-require_once 'core/ControladorFrontal.func.php';
-
-require_once 'core/EntidadBase.php';
-
-require_once 'core/ModeloBase.php';
-        
-//Incluir todos los modelos
-foreach(glob("model/*.php") as $file){
-    require_once $file;
-}
-
-//herramientas para el manejo de sesion
-require_once 'tools/tools.php';
-
 
 if (isset($_GET["controller"])) {
     $controller = $_GET["controller"];
@@ -84,9 +69,9 @@ if (time() - $_SESSION["time"] < 3600) {
     
     if ($id == '2') {
 
-        validarCorto($controller,$action);
+        Tools::validarCorto($controller,$action);
         
-        //frontController($controller,$action);
+        //Tools::frontController($controller,$action);
     }
 
     if ($id == '1') {
@@ -104,29 +89,29 @@ if (time() - $_SESSION["time"] < 3600) {
             //$user_login = $usu;
             //$user_passwd = $pass;
 
-            validar($user_login, $user_passwd);
+            Tools::validar($user_login, $user_passwd);
             
         } else {
 
-            frontController(NULL,"vistaLogin");
+            Tools::frontController(NULL,"vistaLogin");
         }
     };
 
     if ($id == '') {
         
-        frontController(NULL,"salir");
+        Tools::frontController(NULL,"salir");
     }
     
     if ($id == '3') {
         
-        frontController($controller, $action);
+        Tools::frontController($controller, $action);
         //salirSistema();
     }
     
     
 } else {
     
-    frontController(NULL,"salir");
+    Tools::frontController(NULL,"salir");
     
 }
 

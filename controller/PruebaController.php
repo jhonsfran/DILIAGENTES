@@ -1,4 +1,10 @@
-<?php
+<?php namespace controller;
+
+use orm\entity\Usuario as Usuario;
+use core\ControladorBase as ControladorBase;
+
+
+
 class PruebaController extends ControladorBase{
      
     public function __construct() {
@@ -107,9 +113,14 @@ class PruebaController extends ControladorBase{
         $this->view("login",array());
     }
 
-    public function diegonorrea(){
+    public function orm(){
         
-        $this->view("prueba",array());
+        $usuario = new Usuario(null);
+        $usuarios = $usuario->all();
+
+        //$usuarios = $usuario->where("user_nickname", "diegonorrea");
+
+        echo print_r($usuarios);
     }
     
     public function ajax(){

@@ -1,5 +1,4 @@
-<?php
-
+<?php namespace controller;
 
 class TrackerController extends ControladorBase{
      
