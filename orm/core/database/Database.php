@@ -45,8 +45,10 @@ class Database {
             $b = current($this->params);
             next($this->params);
             return $b;
-        }else{
+        }else if(!is_null($this->params)){
             return $this->params;
+        }else{
+            return '';
         }
         
     }
@@ -93,14 +95,16 @@ class Database {
     public function executeQuery($q, $params = null) {
         
         $result = $this->sendQuery($q, $params);
+        
         if (!is_null($result)) {
-            if (!is_object($result)) {
+            /*if (!is_object($result)) {
                 return $result;
-            } else {
+            } else {//*/
                 $row = $this->provider->fetchArray($result);
-                return $row[0];
-            }
+                return $row;
+            /*}*/
         }
+        
         return null;
     }
     

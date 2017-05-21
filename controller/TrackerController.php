@@ -1,5 +1,9 @@
 <?php namespace controller;
 
+use orm\entity\Usuario as Usuario;
+use core\ControladorBase as ControladorBase;
+use tools\Tools as Tools;
+
 class TrackerController extends ControladorBase{
      
     public function __construct() {
@@ -23,7 +27,9 @@ class TrackerController extends ControladorBase{
             
             case 'solicitar_agentes':
                 //$respuesta = $this->solicitarAgentes($_REQUEST["cantidad"]);
-                $respuesta = $this->registrarPosition($_REQUEST["position_cliente"]);
+                $this->registrarPosition($_REQUEST["position_cliente"]);
+                $respuesta = $this->solicitarAgentes($_REQUEST["cantidad"]);
+               
                 
                 break;
             case 'prueba':
@@ -45,55 +51,34 @@ class TrackerController extends ControladorBase{
     
     public function solicitarAgentes($cantidad) {
         
-        $usuarioModel = new UsuarioModel();
-
-        //Conseguimos todas las pruebas
-        $allAgentes = $usuarioModel->getAgentesDisponibles($cantidad);
+        $usuario = new Usuario(null);
+        //$usuarios = $usuario->all();
         
+        $query = "SELECT user_nombre,user_apellidos,user_nickname,user_foto,agente_reputacion FROM usuario,agente WHERE agente_user_nickname = user_nickname AND user_rol = '2' AND agente_estado = 't' LIMIT '$cantidad'";
 
-        return $allAgentes;
+        $usuarios = $usuario->executeQuery($query,null);
+
+        //var_dump($usuarios);
+        
+        return $usuarios;
     }
     
     
     public function registrarPosition($position) {
 
-        $user_login = decrypt($_SESSION["usuario"]);
-        $user_rol = decrypt($_SESSION["rol"]);
+        //$user_login = Tools::decrypt($_SESSION["usuario"]);
+        //$user_rol = Tools::decrypt($_SESSION["rol"]);
         
-        //echo $user_login;
-        //echo $user_rol;
-        //echo json_encode($position);
-
-        $usuario = new Usuario();
+        $usuario = new Usuario(null);
         
-        $resultObject = $usuario->getById('user_nickname', $user_login);
+        //$resultObject = $usuario->find('jhonsfran');
         
-        //echo $resultObject;
+        $resultObject = $usuario->find('jhonsfran');
+
+        $resultObject->setPosition(json_encode($position));
+        $resultObject->update();
+
         
-        /*foreach ($resultObject as $key => $object) {
-            echo $key." => ".$object;
-        }*/
-
-        echo $usuario->update($resultObject);
-/*
-        $resultObject = $usuario->getById('user_nickname',$user_login);
-
-        foreach ($resultObject as $key => $object) {
-            switch ($key) {
-            case 'user_nickname':
-            $usuario->setUserNickname($object);
-            break;
-            case 'user_password':
-            $usuario->setUserPassword($object);
-            break;
-            case 'user_rol':
-            $usuario->setUserRol($object);
-            break;
-            }
-        }
-
-        return $allAgentes;
-         * */
     }
 
 }

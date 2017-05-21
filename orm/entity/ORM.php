@@ -30,8 +30,6 @@ class ORM{
     public static function find($id) {
         $results = self::where(self::getIdClass(), $id);
         return $results[0];
-        
-        
     }
     
     public static function where($field, $value) {
@@ -41,8 +39,6 @@ class ORM{
         
         $results = self::$database->execute($query, null, array($value));
         
-        
-
         if (!is_null($results)) {
             
             $class = get_called_class();
@@ -175,15 +171,25 @@ class ORM{
     
     public function executeQuery($query, $params) {
 
+        $obj = null;
         $result = self::$database->executeQuery($query, $params);
+        
+        //var_dump($result);
 
-        if ($result) {
-            $result = array('error' => false, 'message' => self::$database->getInsertedID($result));
-        } else {
-            $result = array('error' => true, 'message' => self::$database->getError($result));
-        }
+        if (!is_null($result)) {
             
-        return $result;
+            /*$class = get_called_class();
+            
+            for ($i = 0;$i < sizeof($result);$i++) {
+                $obj[$i] = new $class($result[$i]);
+                
+            }*/
+            
+            return $result;
+            
+        }else{
+            throw new ExceptionHandler(ExceptionHandler::CONSULTA_SIN_RESULTADOS);
+        }
     }
 
     public function update() {

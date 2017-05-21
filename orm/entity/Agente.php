@@ -1,5 +1,12 @@
-<?php
-class Agente extends EntidadBase{
+<?php namespace orm\entity;
+
+use orm\entity\ORM as ORM;
+
+/**
+ * @id=agente_user_nickname
+ * **/
+
+class Agente extends ORM{
     private $agente_user_nickname;
     private $agente_reputacion;
     private $agente_estado;
@@ -7,18 +14,24 @@ class Agente extends EntidadBase{
     private $agente_bio;
     private $tabla = "agente";
     
-    public function __construct() {
-        parent::__construct($this->tabla);
+    public function __construct($data) {
+        parent::__construct();
+
+
+        if ($data != NULL && sizeof($data)) {
+            $this->insertFlash($data);
+        }
     }
-    /*Formato de como deberia ser 
-    public function getColumna() {
-        return $this->atributoprivado;
+
+    public function insertFlash($data) {
+        foreach ($this as $key => $value) {
+            $this->$key = isset($data["$key"]) ? $data["$key"] : null;
+        }
     }
- 
-    public function setColumna($columna) {
-        $this->atributoprivado = $columna;
+
+    public function listar() {
+        return get_object_vars($this);
     }
-    */
 
     public function getUserNickname()
     {

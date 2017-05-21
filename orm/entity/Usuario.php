@@ -20,6 +20,7 @@ private $user_rol;
 private $user_activo;
 private $user_fecha;
 private $user_foto;
+private $user_position;
 
 protected static $table = 'usuario';
 
@@ -50,6 +51,13 @@ protected static $table = 'usuario';
  */
 public function getUserNickname() {
     return $this->user_nickname;
+}
+function getPosition() {
+    return $this->user_position;
+}
+
+function setPosition($position) {
+    $this->user_position = $position;
 }
 
 /**
