@@ -9,37 +9,47 @@ class TrackerController extends ControladorBase{
     
     public function index() {
         
-        if(isset($_REQUEST["action"])){
-            $action = $_REQUEST["action"];
+        if(isset($_REQUEST["peticion"])){
+            $action = $_REQUEST["peticion"];
         }else{
             $action = 'index';
         }
+        
 
         switch ($action) {
             case 'index':
-                $respuesta = "ingresó";
-                $this->hola();
+                $respuesta = "";
+                $this->view("template", array());
                 break;
-            case 'tracker':
-                $respuesta = "tracker";
-                $this->hola();
+            case 'solicitar_agentes':
+                $respuesta = $this->solicitarAgentes($_REQUEST["dilegencia"]);
+                
                 break;
             case 'prueba':
                 $this->diegonorrea();
                 $respuesta = "gracias dios";
                 break;
             default:
-                $respuesta = "pailas";
+                $respuesta = "";
         }
         
         $arr = array(
-            'validar' => TRUE,
+            'error_salida' => FALSE,
             'datos' => $respuesta
         );
 
         echo json_encode($arr);
     }
     
- 
+    public function solicitarAgentes($diligencia) {
+        
+        $prueba = new Prueba();
+
+        //Conseguimos todas las pruebas
+        $allpruebas = $prueba->getAll();
+
+        return $allpruebas;
+    }
+
 }
 ?>

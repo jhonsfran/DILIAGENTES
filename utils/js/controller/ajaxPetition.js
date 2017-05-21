@@ -1,7 +1,8 @@
 var httpPetition = {
     ajxSubmit: function (form, url, callback) {
         if ($(form).is('form')) {
-            var form = form.serializeObject();
+            var form = form.serialize();
+            toastr.success(form);
         }
         $.ajax({
             type: "POST",
@@ -41,9 +42,7 @@ var httpPetition = {
                 toastr.info('Procesando');
             },
             success: function (data) {
-                
-                data = JSON.parse(data);
-                
+                                
                 if (data.error) {
                     toastr.clear();
                 } else {
