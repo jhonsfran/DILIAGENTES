@@ -15,8 +15,8 @@ class PruebaController extends ControladorBase{
         
         $respuesta = "";
         
-        if(isset($_REQUEST["action"])){
-            $action = $_REQUEST["action"];
+        if(isset($_REQUEST["peticion"])){
+            $action = $_REQUEST["peticion"];
         }else{
             $action = 'index';
         }

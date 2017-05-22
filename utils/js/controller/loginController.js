@@ -6,8 +6,8 @@ $("#btn_sign_in").on("click",function() {//validar usuario
     var usuario_a_buscar = $("#usuario").val();
     var passwd_user = $("#password").val();
 
-    alert(url_ajax);
-    alert(passwd_user);
+    //alert(url_ajax);
+    //alert(passwd_user);
 
     registro_usuario_new = {
         peticion: 'index',

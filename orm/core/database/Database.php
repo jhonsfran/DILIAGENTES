@@ -84,13 +84,15 @@ class Database {
     private function sendQuery($q, $params) {
         
         $query = $this->prepare($q, $params);
+        
+        var_dump($query);
+        
         $result = $this->provider->query($query);
         
         if ($this->provider->getErrorNo()) {
             error_log($this->provider->getError($result));
         }
         
-        return $result;
     }
     public function executeQuery($q, $params = null) {
         

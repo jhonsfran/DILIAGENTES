@@ -46,7 +46,7 @@ if( isset($_SESSION['id_session']) && (isset($_SESSION['password']) && isset($_S
     
 }
 
-$id = '2';
+//$id = '2';
 
 
 if (isset($_GET["controller"])) {
@@ -69,9 +69,9 @@ if (time() - $_SESSION["time"] < 3600) {
     
     if ($id == '2') {
 
-        //Tools::validarCorto($controller,$action);
+        Tools::validarCorto($controller,$action);
         
-        Tools::frontController($controller,$action);
+        //Tools::frontController($controller,$action);
     }
 
     if ($id == '1') {

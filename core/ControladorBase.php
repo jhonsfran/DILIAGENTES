@@ -62,6 +62,7 @@ class ControladorBase{
             );
 
             echo json_encode($arr);
+            
         }else{
             
             header("Location: landing/index.php.html");
@@ -69,25 +70,6 @@ class ControladorBase{
         }    
         
     }
-
-    /*public function login($action){
-                
-        if(isset($action)){ 
-            
-            $arr = array(
-                'error_salida' => TRUE
-            );
-
-            echo json_encode($arr);
-        }else{
-            
-            header("Location: view/loginView.php");
-            
-        }    
-        
-    }*/
-
-    //Métodos para los controladores
 
 
 }

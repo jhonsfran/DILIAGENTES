@@ -39,6 +39,7 @@ class ORM{
         
         $results = self::$database->execute($query, null, array($value));
         
+        
         if (!is_null($results)) {
             
             $class = get_called_class();
